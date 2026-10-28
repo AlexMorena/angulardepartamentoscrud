@@ -1,0 +1,13 @@
+$kind: http-request
+url: https://apiempleadoscoreoauth.azurewebsites.net/auth/login
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"userName\": \"REY\",\r
+
+    \    \"password\": \"7839\"\r
+
+    }"
+order: 1000

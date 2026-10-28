@@ -1,0 +1,23 @@
+<h1>Detalles departamento</h1>
+
+
+@if(departamento){
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Id Departamento</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{departamento.numero}}</td>
+                <td>{{departamento.nombre}}</td>
+                <td>{{departamento.localidad}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+}

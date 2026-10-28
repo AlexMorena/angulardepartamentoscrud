@@ -6,11 +6,11 @@ import { firstValueFrom } from "rxjs";
 
 @Injectable()
 
-export class ServiceDepartamentos{
+export class ServiceDepartamentos {
     url = environment.urlApiDepartamentos;
-    constructor(private _http: HttpClient){}
+    constructor(private _http: HttpClient) { }
 
-    async getDepartamentosAsync(): Promise<Departamento[]>{
+    async getDepartamentosAsync(): Promise<Departamento[]> {
         let request = "api/departamentos";
         return firstValueFrom(this._http.get<Departamento[]>(this.url + request));
     }
@@ -21,10 +21,30 @@ export class ServiceDepartamentos{
         //Creamos un objeto header para el type
         let header = new HttpHeaders();
         //incluimos la key de content-type
-        header = header.set("content-type","application/json");
+        header = header.set("content-type", "application/json");
         let request = "api/departamentos";
         return firstValueFrom(
-            this._http.post(this.url + request, json, {headers: header})
+            this._http.post(this.url + request, json, { headers: header })
         );
+    }
+
+    async findDepartamentoAsync(id: number): Promise<Departamento> {
+        let request = "api/departamentos/" + id;
+        return firstValueFrom(this._http.get<Departamento>(this.url + request));
+    }
+
+    async updateDepartamentoAsync(departamento: Departamento): Promise<any> {
+        let json = JSON.stringify(departamento);
+        let header = new HttpHeaders();
+        header = header.set("content-type", "application/json");
+        let request = "api/departamentos";
+        return firstValueFrom(
+            this._http.put(this.url + request, json, { headers: header })
+        );
+    }
+
+    async deleteDepartamentoAsync(id: number): Promise<any>{
+        let request = "api/departamentos/" + id;
+        return firstValueFrom(this._http.delete(this.url + request));
     }
 }
